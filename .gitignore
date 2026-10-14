@@ -1,0 +1,6 @@
+node_modules/
+_prerendered/
+dist/
+_art_*.txt
+.DS_Store
+*.log
