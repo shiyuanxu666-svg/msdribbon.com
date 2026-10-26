@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer-core');
 const fs = require('fs');
 const path = require('path');
 
-const BASE = 'http://127.0.0.1:8770';
+const BASE = 'http://127.0.0.1:8790';
 const OUT_DIR = '/workspace/new-site/_prerendered';
 const ROUTES_FILE = '/workspace/new-site/_routes.txt';
 
