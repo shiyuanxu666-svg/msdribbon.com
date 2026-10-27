@@ -36,6 +36,7 @@
 /blog/ribbon-cost-breakdown-oem-buyers
 /blog/ribbon-quality-control-checklist-for-oem-buyer
 /blog/ribbon-supplier-evaluation-sourcing-guide
+/blog/ribbon-manufacturing-process-capacity-planning
 /cases
 /contact
 /faq
