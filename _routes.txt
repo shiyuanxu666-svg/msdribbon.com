@@ -362,3 +362,4 @@
 /products/wrapping-paper/msd-waterproof-handmade-flower-art-diy-wrapping-paper-with
 /services
 /blog/ribbon-factory-audit-checklist-oem-buyer
+/blog/custom-ribbon-sampling-prototype-development-guide
