@@ -363,3 +363,5 @@
 /services
 /blog/ribbon-factory-audit-checklist-oem-buyer
 /blog/custom-ribbon-sampling-prototype-development-guide
+
+/blog/custom-ribbon-specification-rfq-po-guide
