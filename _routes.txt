@@ -365,3 +365,5 @@
 /blog/custom-ribbon-sampling-prototype-development-guide
 
 /blog/custom-ribbon-specification-rfq-po-guide
+
+/blog/custom-ribbon-shipping-landed-cost-guide
