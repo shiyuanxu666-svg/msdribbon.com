@@ -4,3 +4,4 @@ dist/
 _art_*.txt
 .DS_Store
 *.log
+static-server.js

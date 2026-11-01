@@ -367,3 +367,5 @@
 /blog/custom-ribbon-specification-rfq-po-guide
 
 /blog/custom-ribbon-shipping-landed-cost-guide
+
+/blog/custom-ribbon-bow-manufacturing-oem-buyers-guide
