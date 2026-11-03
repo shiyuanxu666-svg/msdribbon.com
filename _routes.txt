@@ -370,3 +370,4 @@
 
 /blog/custom-ribbon-bow-manufacturing-oem-buyers-guide
 /blog/custom-ribbon-colour-matching-pantone-guide
+/blog/custom-ribbon-yield-consumption-guide
