@@ -373,3 +373,4 @@
 /blog/custom-ribbon-yield-consumption-guide
 /blog/custom-ribbon-material-selection-guide
 /blog/custom-ribbon-first-order-program-planning-guide
+/blog/custom-ribbon-packaging-packing-format-guide
