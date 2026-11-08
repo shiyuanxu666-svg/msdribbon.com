@@ -375,3 +375,4 @@
 /blog/custom-ribbon-first-order-program-planning-guide
 /blog/custom-ribbon-packaging-packing-format-guide
 /blog/custom-ribbon-lead-time-production-scheduling-guide
+/blog/custom-ribbon-payment-terms-supplier-risk-guide
