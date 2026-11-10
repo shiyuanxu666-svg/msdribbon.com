@@ -377,3 +377,4 @@
 /blog/custom-ribbon-lead-time-production-scheduling-guide
 /blog/custom-ribbon-payment-terms-supplier-risk-guide
 /blog/custom-ribbon-supply-chain-resilience-multi-sourcing
+/blog/custom-ribbon-print-durability-colorfastness-testing-guide
