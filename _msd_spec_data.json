@@ -1,0 +1,362 @@
+{
+  "ribbon": {
+    "materials": "Polyester (satin, grosgrain, organza, velvet, taffeta), polypropylene (PP), cotton, jute burlap, RPET recycled polyester, bamboo fibre, and paper.",
+    "widths": "3 mm – 150 mm (0.12\" – 6\"); common volume widths 5, 10, 15, 19, 25, 38, 50 and 75 mm.",
+    "moq": "1,000 m per colour and width for stock programmes; 500 m for selected single-colour designs.",
+    "price": "US$0.06 – US$1.80 / m depending on material and construction.",
+    "lead": "15 – 25 days for stock programmes; 25 – 45 days for printed or metallised custom programmes.",
+    "custom": "Screen printing, heat transfer, sublimation, woven jacquard, wired edge, metallic yarn, laser-cut edge and elastic.",
+    "certs": "OEKO-TEX Standard 100, FSC, BSCI, SEDEX, ISO 9001, SMETA.",
+    "uses": "Gift packaging, Christmas decoration, apparel trim, home décor, hair accessories, pet accessories, perfume bottle bows and wedding decoration."
+  },
+  "satin-ribbons": {
+    "materials": "100% polyester satin (double-faced and single-faced), recycled RPET satin, and silk-blend satin for premium lines.",
+    "widths": "6 mm – 150 mm (0.25\" – 6\"); 19, 25, 38, 50 and 75 mm are the volume gift-packaging widths.",
+    "moq": "1,000 m per colour and width; 500 m for solid-colour development runs.",
+    "price": "US$0.12 – US$0.95 / m for polyester satin; US$1.10 – US$2.60 / m for RPET satin or silk blends.",
+    "lead": "18 – 30 days for solid colours; 28 – 50 days for printed satin.",
+    "custom": "Solid colours, multi-colour splicing, printed patterns, gold and silver metallic, elastic backing and pre-cut lengths.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001, SMETA.",
+    "uses": "Gift box wrapping, flower bouquet wrapping, apparel trims, ribbon flower making and bridal favours."
+  },
+  "grosgrain-ribbons": {
+    "materials": "Polyester grosgrain (ribbed weave), RPET grosgrain, and paper grosgrain for craft and gift-wrap programmes.",
+    "widths": "5 mm – 50 mm (0.2\" – 2\"); 10, 15, 19, 25 and 38 mm are standard.",
+    "moq": "1,000 m per colour and width.",
+    "price": "US$0.09 – US$0.55 / m for polyester grosgrain; US$0.60 – US$1.10 / m for RPET.",
+    "lead": "15 – 25 days for solid colours; 25 – 45 days for printed grosgrain.",
+    "custom": "Screen printing, heat transfer, woven jacquard patterns, wired edge and metallic thread.",
+    "certs": "OEKO-TEX Standard 100, FSC, BSCI, ISO 9001.",
+    "uses": "Gift wrapping, hair accessories, bag handles, corset and craft trims, and festive decoration."
+  },
+  "organza-ribbon": {
+    "materials": "Polyester organza including wired-edge and metallic-thread organza, silk organza for luxury programmes, and RPET organza.",
+    "widths": "5 mm – 75 mm (0.2\" – 3\"); 25, 38 and 50 mm are standard for floral and gift wrapping.",
+    "moq": "1,000 m per colour and width; 500 m for selected metallised shades.",
+    "price": "US$0.18 – US$1.20 / m for standard organza; US$1.30 – US$3.20 / m for double-sided metallic-wired organza.",
+    "lead": "18 – 30 days for solid colours; 30 – 50 days for wired or metallic organza.",
+    "custom": "Double-sided metallic yarn, wired selvedge, edge-cut, printed patterns and pre-cut sheets.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001, SMETA.",
+    "uses": "Flower wrapping, wedding favours, gift packaging, Christmas tree wraps and craft projects."
+  },
+  "velvet-ribbons": {
+    "materials": "100% polyester velvet, and plush velvet with a cotton-blend backing for heavier gift programmes.",
+    "widths": "10 mm – 50 mm (0.4\" – 2\"); 13 mm, 19 mm and 38 mm are volume sizes.",
+    "moq": "1,000 m per colour; 500 m for selected solid colours.",
+    "price": "US$0.35 – US$1.90 / m for polyester velvet.",
+    "lead": "20 – 35 days for solid colours; 30 – 50 days for printed velvet.",
+    "custom": "Solid colours, gold foil print, cut lengths and pre-tied bow combinations.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Christmas gift packaging, apparel trim, hair bows, headbands and seasonal gift sets."
+  },
+  "burlap-ribbon": {
+    "materials": "Natural jute burlap, polyester imitation burlap, and cotton burlap.",
+    "widths": "19 mm – 150 mm (0.75\" – 6\"); 38, 50 and 75 mm are standard.",
+    "moq": "1,000 m per colour and width.",
+    "price": "US$0.20 – US$0.95 / m for jute burlap; US$0.15 – US$0.55 / m for polyester imitation.",
+    "lead": "18 – 30 days for solid colours; 25 – 45 days for printed and distressed finishes.",
+    "custom": "Printed patterns, distressed and frayed edges, wired edge and cut lengths.",
+    "certs": "OEKO-TEX Standard 100, FSC, BSCI.",
+    "uses": "Rustic and farmhouse gift wrapping, wedding décor, florist packaging and craft retail."
+  },
+  "cotton-ribbon": {
+    "materials": "100% cotton (sateen, grosgrain, herringbone and printed), and cotton/poly blends.",
+    "widths": "10 mm – 38 mm (0.4\" – 1.5\"); 15, 19 and 25 mm are standard.",
+    "moq": "1,000 m per colour and width.",
+    "price": "US$0.28 – US$1.30 / m for pure cotton; US$0.20 – US$0.80 / m for cotton/poly blends.",
+    "lead": "20 – 35 days for solid colours; 30 – 50 days for printed cotton.",
+    "custom": "Printed patterns, woven labels, embroidery-ready widths and pre-cut lengths.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Gift packaging, baby and nursery products, apparel trim, eco-brand packaging and craft retail."
+  },
+  "eco-ribbons": {
+    "materials": "RPET recycled polyester (post-consumer bottles), bamboo fibre, Tencel/Lyocell, organic cotton and FSC-certified paper ribbon.",
+    "widths": "10 mm – 50 mm (0.4\" – 2\") for RPET and bamboo; 19 and 38 mm are standard.",
+    "moq": "1,000 m per colour and width; 500 m for selected RPET stock colours.",
+    "price": "US$0.25 – US$1.50 / m for RPET; US$0.90 – US$3.50 / m for Tencel and bamboo fibre; US$0.18 – US$0.70 / m for FSC paper ribbon.",
+    "lead": "25 – 45 days for RPET and bamboo; 20 – 35 days for FSC paper ribbon.",
+    "custom": "Printed patterns, woven jacquard and GRS chain-of-custody documentation.",
+    "certs": "GRS, OEKO-TEX Standard 100, FSC, BSCI, ISO 9001.",
+    "uses": "Sustainable gift packaging, eco-brand identity programmes, retail compliance and circular-economy gift sets."
+  },
+  "polypropylene-ribbon": {
+    "materials": "100% polypropylene (PP) including metallic-foil PP and matte-finish PP.",
+    "widths": "5 mm – 38 mm (0.2\" – 1.5\"); 10, 15, 19 and 25 mm are standard.",
+    "moq": "1,000 m per colour and width.",
+    "price": "US$0.05 – US$0.40 / m for PP; US$0.35 – US$1.10 / m for metallic-foil PP.",
+    "lead": "15 – 25 days for solid colours; 25 – 40 days for metallic and printed PP.",
+    "custom": "Metallic foil, laser-cut edge, printed patterns and pre-cut lengths for high-volume gift sets.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "High-volume gift packaging, Christmas gift wrap, promotional programmes and seasonal retail."
+  },
+  "polypropylene-series": {
+    "materials": "100% polypropylene (PP) in matte, metallic and glitter finishes, plus PP-wound edge and PP-based bows.",
+    "widths": "5 mm – 38 mm (0.2\" – 1.5\") for ribbon; 1\" – 6\" (25 – 150 mm) for pull bows.",
+    "moq": "1,000 m per colour and width for ribbon; 5,000 pieces per design for PP bows.",
+    "price": "US$0.05 – US$0.40 / m for PP ribbon; US$0.02 – US$0.09 / piece for PP pull bows.",
+    "lead": "15 – 25 days for ribbon; 20 – 35 days for bows.",
+    "custom": "Metallic and glitter finishes, laser-cut edge and self-adhesive pull-bow formats.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Cost-driven gift packaging, promotional handouts, Christmas programmes and volume retail."
+  },
+  "printed-ribbon": {
+    "materials": "Polyester satin and grosgrain printed with water-based and solvent-based inks; PP printed for high-volume programmes.",
+    "widths": "6 mm – 50 mm (0.25\" – 2\"); 19, 25 and 38 mm are standard.",
+    "moq": "1,000 m per design (colour + width + print); 3,000 m for new custom designs.",
+    "price": "US$0.35 – US$1.80 / m printed on polyester; US$0.12 – US$0.55 / m printed on PP.",
+    "lead": "25 – 40 days after artwork approval; 30 – 45 days for multi-colour and new screen setups.",
+    "custom": "Screen printing, heat transfer, sublimation and woven jacquard, with pantone colour matching.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Retail packaging, brand identity programmes, seasonal gift sets and event merchandise."
+  },
+  "custom-printed-ribbons": {
+    "materials": "Polyester satin, grosgrain, organza, cotton and PP bases with custom printing and woven branding.",
+    "widths": "5 mm – 75 mm (0.2\" – 3\"), cut to your specification.",
+    "moq": "1,000 m per design; 3,000 m for new artwork and new colour development.",
+    "price": "US$0.35 – US$2.20 / m depending on base material, print coverage and complexity.",
+    "lead": "25 – 40 days after artwork approval; 35 – 50 days for woven jacquard branding.",
+    "custom": "Full custom artwork, pantone colour matching, woven-label programmes and short-run seasonal designs.",
+    "certs": "OEKO-TEX Standard 100, BSCI, SEDEX, ISO 9001, SMETA.",
+    "uses": "Brand-owner packaging, retail compliance programmes, private-label gift sets and seasonal collections."
+  },
+  "screen-printed-ribbon": {
+    "materials": "Polyester grosgrain, satin and cotton printed by flat screen, with optional metallic and neon inks.",
+    "widths": "6 mm – 38 mm (0.25\" – 1.5\"); 19 and 25 mm are standard.",
+    "moq": "1,000 m per design; 3,000 m for new screen development.",
+    "price": "US$0.38 – US$1.60 / m.",
+    "lead": "25 – 40 days after artwork approval; add 5 – 10 days for new screen tooling.",
+    "custom": "Pantone colour matching, metallic and fluorescent inks, and small-batch seasonal runs.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Promotional retail, festive programmes, gift packaging and event branding."
+  },
+  "hot-stamping-ribbon": {
+    "materials": "Polyester satin and grosgrain with hot-stamped gold, silver, rose-gold and holographic foils.",
+    "widths": "6 mm – 38 mm (0.25\" – 1.5\"); 19, 25 and 38 mm are standard.",
+    "moq": "1,000 m per design; 3,000 m for new foil-matched shades.",
+    "price": "US$0.50 – US$2.10 / m depending on foil coverage and width.",
+    "lead": "28 – 45 days after artwork approval.",
+    "custom": "Metallic foil matching, holographic and matte foils, and repeated logo programmes.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Premium gift packaging, luxury beauty gift sets, cosmetics and holiday premium lines."
+  },
+  "thermal-transfer-printer-ribbon": {
+    "materials": "Wax, resin and wax-resin thermal transfer ribbons for industrial and variable-data labelling.",
+    "widths": "25 mm – 152 mm (1\" – 6\") in coated and uncoated grades.",
+    "moq": "10 rolls per grade and width; full-roll production for repeat programmes.",
+    "price": "US$0.80 – US$4.50 / roll depending on grade, width and ribbon length.",
+    "lead": "20 – 35 days for standard grades; 30 – 45 days for certified food-contact grades.",
+    "custom": "Custom widths, pre-printed logos, wax-resin blends and chemical-resistance grades.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Logistics and warehouse labelling, food and beverage secondary packaging, retail shelf labelling and chemical inventory labelling."
+  },
+  "sheer-ribbons": {
+    "materials": "Polyester organza with embedded metallic wire edges, plus sheer chiffon and net ribbons.",
+    "widths": "10 mm – 75 mm (0.4\" – 3\"); 25, 38 and 50 mm are standard.",
+    "moq": "1,000 m per colour and width.",
+    "price": "US$0.35 – US$1.80 / m for wired organza; US$0.28 – US$1.20 / m for sheer chiffon and net.",
+    "lead": "20 – 35 days for solid colours; 30 – 45 days for double-sided metallic wired.",
+    "custom": "Double-sided metallic yarn, edge-cut and pre-cut lengths for floral work.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Florist packaging, Christmas tree and wreath decoration, wedding décor and craft retail."
+  },
+  "ribbon-bow": {
+    "materials": "Satin, grosgrain, organza, velvet, burlap, cotton, PP and RPET bases with wired or non-wired structures.",
+    "widths": "15 mm – 150 mm ribbon width; finished bow sizes from 1\" to 8\" (25 – 200 mm).",
+    "moq": "5,000 pieces per design and size; 1,000 pieces for custom-branded programmes.",
+    "price": "US$0.02 – US$0.28 / piece depending on material, size and hand-assembly.",
+    "lead": "18 – 30 days for stock programmes; 30 – 50 days for custom-branded and assembled bows.",
+    "custom": "Pre-tied and hand-tied formats, custom ribbon colours, branded ribbon tails and mixed-material gift sets.",
+    "certs": "OEKO-TEX Standard 100, BSCI, SEDEX, ISO 9001, SMETA.",
+    "uses": "Gift packaging, Christmas programmes, perfume and cosmetics gift sets, wedding favours and retail gift-with-purchase."
+  },
+  "pull-bow": {
+    "materials": "Polypropylene, satin, grosgrain and organza pull bows with self-adhesive backing.",
+    "widths": "1\" – 6\" (25 – 150 mm); 2\", 3\" and 4\" are the volume sizes.",
+    "moq": "5,000 pieces per size and colour; 10,000 pieces for printed designs.",
+    "price": "US$0.02 – US$0.09 / piece for PP; US$0.04 – US$0.16 / piece for fabric pull bows.",
+    "lead": "15 – 25 days for stock; 25 – 40 days for printed pull bows.",
+    "custom": "Self-adhesive release-paper backing, printed designs, mixed colours in one pack and recycled PP options.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Gift-with-purchase, volume gift packaging, bakery and confectionery, seasonal retail and craft resale."
+  },
+  "curly-bow": {
+    "materials": "Polyester satin, organza and grosgrain with a curled or spiral ribbon structure.",
+    "widths": "10 mm – 25 mm ribbon width; finished bows from 2\" to 4\" (50 – 100 mm).",
+    "moq": "5,000 pieces per design and size.",
+    "price": "US$0.04 – US$0.18 / piece.",
+    "lead": "18 – 30 days for stock; 28 – 45 days for custom colours.",
+    "custom": "Custom ribbon colours, mixed-width curled structures and branded ribbon.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Gift packaging accents, party and event decoration, bouquets and seasonal gift sets."
+  },
+  "star-bow": {
+    "materials": "Polypropylene, satin and grosgrain star-shaped bows, including glitter-finish and heat-transfer printed versions.",
+    "widths": "1.5\" – 4\" (38 – 100 mm); 2\" and 3\" are the volume sizes.",
+    "moq": "5,000 pieces per size and colour.",
+    "price": "US$0.03 – US$0.14 / piece for PP; US$0.06 – US$0.22 / piece for printed fabric.",
+    "lead": "18 – 30 days for stock; 28 – 45 days for printed star bows.",
+    "custom": "Heat-transfer printed designs, glitter finishes and six standard colours.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Christmas and holiday gift packaging, gift-with-purchase and seasonal retail programmes."
+  },
+  "fountain-bow": {
+    "materials": "Satin and grosgrain fountain (cascade) bows with multiple loops and flowing ribbon tails.",
+    "widths": "19 mm – 38 mm ribbon width; finished bows from 3\" to 6\" (75 – 150 mm).",
+    "moq": "5,000 pieces per design and size.",
+    "price": "US$0.05 – US$0.20 / piece.",
+    "lead": "20 – 35 days for stock; 30 – 45 days for custom ribbon colours.",
+    "custom": "Custom ribbon colours, brushed tails and multi-loop cascade structures.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Premium gift packaging, beauty and cosmetics gift sets, wedding favours and festive programmes."
+  },
+  "perfume-bow": {
+    "materials": "Satin, organza, grosgrain and wired-edge organza bows sized for perfume and fragrance bottles.",
+    "widths": "10 mm – 25 mm ribbon width; finished bows from 1.5\" to 3\" (38 – 75 mm).",
+    "moq": "5,000 pieces per design; 10,000 pieces for printed branded versions.",
+    "price": "US$0.05 – US$0.24 / piece depending on hand-assembly and wired detailing.",
+    "lead": "20 – 35 days for stock; 30 – 45 days for custom colours and branding.",
+    "custom": "Hand-tied structure, custom colours, branded ribbon with your own print and mixed-colour gift sets.",
+    "certs": "OEKO-TEX Standard 100, BSCI, SEDEX, ISO 9001, SMETA.",
+    "uses": "Perfumery and cosmetics gift sets, skincare packaging, fragrance sampling programmes and premium retail gifting."
+  },
+  "wedding-bow": {
+    "materials": "Satin, organza, grosgrain and lace-trimmed bases with satin ribbon tails.",
+    "widths": "19 mm – 38 mm ribbon width; finished bows from 2\" to 5\" (50 – 125 mm).",
+    "moq": "5,000 pieces per design and size; 1,000 pieces for bespoke designs.",
+    "price": "US$0.06 – US$0.26 / piece.",
+    "lead": "22 – 38 days for stock; 32 – 50 days for bespoke colour and shape development.",
+    "custom": "Ivory and blush colour matching, lace and pearl embellishment, and bespoke bow shapes.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Wedding favours, bridal packaging, table setting and ceremony décor, and romantic gift sets."
+  },
+  "gift-ribbon-bow": {
+    "materials": "Satin, grosgrain, organza, velvet and PP bases in standard gift-bow structures.",
+    "widths": "15 mm – 38 mm ribbon width; finished bows from 1.5\" to 4\" (38 – 100 mm).",
+    "moq": "5,000 pieces per design and size.",
+    "price": "US$0.03 – US$0.18 / piece.",
+    "lead": "18 – 30 days for stock; 28 – 45 days for custom-branded programmes.",
+    "custom": "Standard gift colours, custom ribbon prints and mixed gift-set configurations.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Everyday gift packaging, gift-with-purchase, seasonal gift sets and retail gifting programmes."
+  },
+  "christmas-ribbons-bow": {
+    "materials": "Velvet, satin, grosgrain and metallic-wired organza bows in Christmas colour palettes.",
+    "widths": "19 mm – 38 mm ribbon width; finished bows from 2\" to 4\" (50 – 100 mm).",
+    "moq": "5,000 pieces per design and size.",
+    "price": "US$0.05 – US$0.24 / piece.",
+    "lead": "20 – 35 days in peak season; order 45 – 60 days ahead for peak volumes.",
+    "custom": "Christmas colour matching, metallic and glitter finishes, and branded ribbon for retailer programmes.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Christmas gift packaging, retailer seasonal programmes, advent and wreath decoration, and holiday gift-with-purchase."
+  },
+  "holiday-ribbon-bow": {
+    "materials": "Velvet, satin, grosgrain, organza and PP bases in festive colourways.",
+    "widths": "15 mm – 38 mm ribbon width; finished bows from 1.5\" to 4\" (38 – 100 mm).",
+    "moq": "5,000 pieces per design and size.",
+    "price": "US$0.03 – US$0.20 / piece.",
+    "lead": "18 – 32 days in peak season; order 45 – 60 days ahead for peak volumes.",
+    "custom": "Festive colour matching, glitter and metallic finishes, and retailer-specific branding.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Holiday gift packaging, gift-with-purchase, seasonal retail fixtures and party supplies."
+  },
+  "christmas-ribbon": {
+    "materials": "Velvet, satin, grosgrain, metallic-wired organza and metallic PP in Christmas colour palettes.",
+    "widths": "10 mm – 50 mm (0.4\" – 2\"); 19, 25 and 38 mm are the volume widths.",
+    "moq": "1,000 m per colour and width.",
+    "price": "US$0.15 – US$1.60 / m for fabric; US$0.05 – US$0.40 / m for metallic PP.",
+    "lead": "20 – 35 days in peak season; order 45 – 60 days ahead for peak volumes.",
+    "custom": "Christmas colour matching, metallic and glitter finishes, printed designs and pre-cut lengths.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Christmas gift wrapping, tree and wreath decoration, retail seasonal programmes and holiday craft."
+  },
+  "holiday-ribbon": {
+    "materials": "Polyester satin, grosgrain, organza and velvet in festive red, green, gold and metallised palettes.",
+    "widths": "10 mm – 38 mm (0.4\" – 1.5\"); 19 and 25 mm are standard.",
+    "moq": "1,000 m per colour and width.",
+    "price": "US$0.12 – US$1.30 / m.",
+    "lead": "18 – 32 days in peak season; order 45 – 60 days ahead for peak volumes.",
+    "custom": "Festive colour matching, metallic accents, printed designs and pre-cut lengths.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Holiday gift packaging, seasonal retail programmes, craft resale and party decoration."
+  },
+  "valentine-ribbons": {
+    "materials": "Satin, grosgrain, organza, velvet and PP in Valentine's palettes (red, pink, white and metallic).",
+    "widths": "10 mm – 38 mm (0.4\" – 1.5\"); 19 and 25 mm are standard.",
+    "moq": "1,000 m per colour and width.",
+    "price": "US$0.12 – US$1.20 / m.",
+    "lead": "18 – 30 days; order 40 – 50 days ahead for Valentine's and Q1 peaks.",
+    "custom": "Valentine colour matching, printed messages and hearts, and pre-cut lengths.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Valentine's gift packaging, florist packaging, confectionery packaging and seasonal retail."
+  },
+  "mother-s-day-ribbon": {
+    "materials": "Satin, grosgrain, organza, cotton and PP in soft floral palettes (pink, lilac, cream and sage).",
+    "widths": "10 mm – 38 mm (0.4\" – 1.5\"); 19 and 25 mm are standard.",
+    "moq": "1,000 m per colour and width.",
+    "price": "US$0.12 – US$1.10 / m.",
+    "lead": "18 – 30 days; order 40 – 50 days ahead for Mother's Day and Q2 peaks.",
+    "custom": "Floral colour matching, printed messages and pre-cut lengths.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Mother's Day gift packaging, florist packaging, confectionery packaging and seasonal gifting."
+  },
+  "national-day-ribbon": {
+    "materials": "Satin, grosgrain, organza, PP and metallic finishes in national and festival colour palettes.",
+    "widths": "10 mm – 38 mm (0.4\" – 1.5\"); 19 and 25 mm are standard.",
+    "moq": "1,000 m per colour and width.",
+    "price": "US$0.12 – US$1.20 / m.",
+    "lead": "18 – 30 days; order 40 – 50 days ahead for national holiday peaks.",
+    "custom": "Festival colour matching, printed national motifs, metallic finishes and pre-cut lengths.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "National holiday gift packaging, festival retail programmes and promotional gift sets."
+  },
+  "gift-box": {
+    "materials": "FSC-certified paperboard, rigid board, and paper ribbon-and-bow gift sets.",
+    "widths": "Ribbon widths 10 mm – 38 mm; boxes from 100 × 100 × 40 mm up to 400 × 300 × 120 mm.",
+    "moq": "500 pieces per size and design; 1,000 pieces for fully custom-printed structures.",
+    "price": "US$0.35 – US$4.20 / piece depending on board weight, print coverage and structure.",
+    "lead": "25 – 40 days after artwork approval; 35 – 50 days for rigid structures.",
+    "custom": "Offset and digital printing, spot UV, foil stamping, ribbon-and-bow sets and inserts.",
+    "certs": "FSC, BSCI, SEDEX, ISO 9001, SMETA.",
+    "uses": "Gift packaging for cosmetics and beauty, premium retail gifting, e-commerce shipping and corporate gifting."
+  },
+  "gift-bag": {
+    "materials": "FSC-certified kraft and coated paper, non-woven PP, and RPET non-woven fabric.",
+    "widths": "Bags from 180 × 250 × 80 mm up to 400 × 400 × 150 mm.",
+    "moq": "500 pieces per size and design; 1,000 pieces for custom-printed structures.",
+    "price": "US$0.28 – US$2.60 / piece depending on material, print coverage and handle type.",
+    "lead": "25 – 40 days after artwork approval.",
+    "custom": "Offset and flexo printing, rope and PP-handle options, RPET fabric and ribbon-tie closures.",
+    "certs": "FSC, GRS, BSCI, ISO 9001, SMETA.",
+    "uses": "Retail gifting, boutique packaging, e-commerce fulfilment, trade show giveaways and corporate gifting."
+  },
+  "gift-packing": {
+    "materials": "Tissue paper, gift wrap paper, cellophane, honeycomb paper, kraft filler, and ribbon-and-bow sets.",
+    "widths": "Tissue 500 × 700 mm; gift wrap 760 × 500 mm; honeycomb rolls 380 mm × 100 m.",
+    "moq": "500 sheets or rolls per design; 1,000 for fully custom-printed packs.",
+    "price": "US$0.06 – US$1.40 per sheet or roll depending on material and print.",
+    "lead": "20 – 35 days after artwork approval.",
+    "custom": "Offset and flexo printing, custom sheet sizes, ribbon-and-bow sets and gift assembly.",
+    "certs": "FSC, BSCI, ISO 9001, SMETA.",
+    "uses": "Retail gift wrapping, e-commerce fulfilment, boutique packaging and seasonal gift sets."
+  },
+  "wrapping-paper": {
+    "materials": "FSC-certified coated and uncoated paper, kraft paper, metallised paper, and woven-texture gift wrap.",
+    "widths": "Rolls 380 mm and 500 mm wide; 50 m and 100 m lengths; sheets 700 × 500 mm.",
+    "moq": "500 rolls or sheets per design; 1,000 for fully custom-printed designs.",
+    "price": "US$0.10 – US$1.60 / roll depending on weight, finish and print.",
+    "lead": "20 – 35 days after artwork approval.",
+    "custom": "Offset and flexo printing, metallic and embossed finishes, custom widths and woven textures.",
+    "certs": "FSC, BSCI, ISO 9001, SMETA.",
+    "uses": "Gift wrapping, boutique and retail packaging, e-commerce fulfilment and festive gift programmes."
+  },
+  "screen-printed-ribbon": {
+    "materials": "Polyester grosgrain, satin and cotton printed by flat screen, with optional metallic and neon inks.",
+    "widths": "6 mm – 38 mm (0.25\" – 1.5\"); 19 and 25 mm are standard.",
+    "moq": "1,000 m per design; 3,000 m for new screen development.",
+    "price": "US$0.38 – US$1.60 / m.",
+    "lead": "25 – 40 days after artwork approval; add 5 – 10 days for new screen tooling.",
+    "custom": "Pantone colour matching, metallic and fluorescent inks, and small-batch seasonal runs.",
+    "certs": "OEKO-TEX Standard 100, BSCI, ISO 9001.",
+    "uses": "Promotional retail, festive programmes, gift packaging and event branding."
+  }
+}
