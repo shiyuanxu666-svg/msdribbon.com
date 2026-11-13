@@ -379,3 +379,4 @@
 /blog/custom-ribbon-supply-chain-resilience-multi-sourcing
 /blog/custom-ribbon-print-durability-colorfastness-testing-guide
 /blog/custom-ribbon-aql-sampling-inspection-protocol-guide
+/blog/custom-ribbon-chemical-compliance-restricted-substances-guide
