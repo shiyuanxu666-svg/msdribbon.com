@@ -381,3 +381,4 @@
 /blog/custom-ribbon-aql-sampling-inspection-protocol-guide
 /blog/custom-ribbon-chemical-compliance-restricted-substances-guide
 /blog/custom-ribbon-supplier-quality-agreement-guide
+/blog/custom-ribbon-die-cutting-edge-finishing-guide

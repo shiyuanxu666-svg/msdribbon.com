@@ -1,0 +1,267 @@
+#!/usr/bin/env node
+// build-article-diecut.js — 生成 "Custom Ribbon Die-Cutting & Edge Finishing Guide" 文章
+// 输出: blog/custom-ribbon-die-cutting-edge-finishing-guide/index.html
+
+const fs = require('fs');
+const path = require('path');
+
+const SLUG = 'custom-ribbon-die-cutting-edge-finishing-guide';
+const URL = `https://msdribbon.com/blog/${SLUG}`;
+const DATE = '2026-11-15';
+const DATE_ISO = '2026-11-15T08:20:00+00:00';
+
+const TITLE = 'Custom Ribbon Die-Cutting & Edge Finishing Guide | Ribbon Manufacturer';
+const H1 = 'Custom Ribbon Die-Cutting and Edge Finishing Guide for OEM Buyers';
+const DESC = 'Custom ribbon die-cutting and edge finishing guide for OEM buyers: cutting methods, tooling costs, edge treatments, tolerances and how to write a spec.'
+
+const FAQ = [
+  {
+    q: 'What is die-cutting in custom ribbon production, and when should I specify it?',
+    a: `Die-cutting means converting a continuous ribbon or web into discrete shapes using a steel rule or magnetic blade held in a wooden or steel die, pressed through by a hydraulic or pneumatic press. It is the standard way to turn a flat roll of ribbon into a heart, a leaf, a star, a petal, a brand initial or any other silhouette. You should specify it when the finished item is a shaped element rather than a length of ribbon: gift packaging bows, flower heads for florists, hair accessory components, seasonal craft shapes, book and gift embellishments, event confetti shapes and logo-shaped branding pieces. You should not specify it when the ribbon is simply cut to length, because a straight guillotine cut is faster, cheaper and produces no tooling cost. The commercial dividing line is usually the number of distinct shapes in a programme. A single shape repeated in one size across one colourway is a straightforward die-cut job. Four shapes across two widths across three colourways turns into a tooling inventory question, and the honest way to handle that is to treat the number of dies as a costed line item in the quotation rather than something discovered at the end.`
+  },
+  {
+    q: 'Which cutting methods should I choose: die-cutting, laser, heat or knife?',
+    a: `Four methods cover almost all commercial ribbon converting, and the right choice depends on the material, the shape complexity and the volume. Die-cutting with a steel rule blade is the workhorse: it is accurate, repeatable, fast at volume, works on essentially every ribbon construction including mesh, velvet, organza, burlap and wired ribbon, and produces a clean edge with no heat. Laser cutting is appropriate for very fine or highly intricate shapes, for small or single-ply material, and where a blade would need to be made for a one-off shape; it is clean and precise but slower and more expensive per piece, and it can scorch or seal the edge of some synthetics, which matters on a matte construction. Heat cutting uses a heated blade to seal the edge as it cuts, which is the correct method for a synthetic ribbon where fraying is the primary concern, because it locks the fibres; it is also the fastest method for high-volume straight cuts, and it is the standard for polypropylene and polyester. Knife or guillotine cutting is a straight cut to length only and involves no tooling cost. In practice a factory will combine methods: die-cutting for the shaped elements and heat cutting for the straight edges of the same programme, because they are different machines in different parts of the plant. When you write the specification, name the method only where the edge appearance matters, and specify the required edge result instead, because that is what you can inspect.`
+  },
+  {
+    q: 'How much does die-cutting tooling cost, and is it a one-off charge?',
+    a: `Tooling is a genuine one-off cost, and it should be quoted as one. A simple steel rule die for a single uncomplicated shape on a standard width may cost in the low tens of US dollars; a multi-level die that produces several shapes or sizes from one sheet, or a die for a large or complex silhouette, can run to several hundred dollars; magnetic dies, used where the shape changes frequently and the tooling would otherwise be uneconomic, are typically rented or charged per run rather than purchased. Beyond the die itself, expect charges for the sample proof and die proofing, for the cutting setup and first-article approval, and sometimes for the steel rule being produced from a buyer-supplied vector file rather than from a physical sample, which is the preferred route because it is dimensionally exact. Tooling is normally amortised into the unit price with a stated minimum order quantity, and most factories will waive or reduce it once the order volume justifies it, so it is worth asking explicitly what the amortisation assumption is and at what volume the die cost disappears from the price. Two commercial practices are worth insisting on. First, ownership of the die should sit with the buyer, or at minimum the buyer should have the right to take delivery of the die if the relationship ends, so that a second supplier can be qualified without paying for new tooling. Second, the die should be tagged and stored against a unique tool number tied to your part reference, so that the die, the sample and the order all point at the same object. A factory with an untraceable die inventory will eventually cut your shape on the wrong die.`
+  },
+  {
+    q: 'What edge treatments are available for ribbon, and how do I choose one?',
+    a: `The available edge treatments are heat-sealed, cut-and-overlocked, raw or cut clean, pinked, and hand-finished with a folded and stitched hem, and the choice is driven by how the finished ribbon will be used. Heat-sealed edges suit most synthetic gift packaging and craft ribbon because they prevent fraying and give a stable edge for folding or knotting, and they also affect how the ribbon behaves when it is folded: a sealed edge has slightly more body and holds a crease better. Raw cut edges suit ribbon that will be covered, backed or hidden in a finished assembly, and they cost nothing, but they will fray if the component is handled or stored badly. Cut-and-overlocked edges are used where a slightly heavier, more textile-like edge is acceptable and where the construction is cotton, linen or burlap, since overlocking controls fraying on natural fibres in a way that heat cannot. Pinked edges, a zigzag cut, are a decorative option and a rarely used one in commercial packaging because they consume material and add cost. A folded-and-stitched hem gives a premium, finished appearance, is the right choice for high-visibility garment trim, and adds both labour and a measurable dimensional change, so the finished width and the edge-to-edge tolerance have to be specified against the finished dimension rather than the raw ribbon. The safest approach is to state the edge treatment as a requirement in the specification and to approve a physical sample that carries that exact edge, because edges are the part of a ribbon that buyers most often accept verbally and then dispute on inspection.`
+  },
+  {
+    q: 'What tolerances should I specify for cut ribbon shapes?',
+    a: `Specify tolerances in millimetres, state where they are measured, and state what they are measured on. A reasonable baseline for a commercial die-cut component is plus or minus one millimetre on the overall length and width of the shape, plus or minus one degree on orientation, and plus or minus half a millimetre on feature-to-feature positioning for multi-part shapes, measured on a finished component at room temperature after the component has been relaxed for a minimum of four hours, not on ribbon still on the roll. That last clause matters more than it appears. A component cut from ribbon under tension will change dimension once it is released, and if the buyer measures the component in the flat state while the factory measured it on the roll, the two will disagree by more than the tolerance itself, which produces an argument that has no technical resolution. Where the shape must interlock with another part, the tolerance should be tightened on the mating feature and looser on free edges, and it should be stated explicitly which is which. Where the component will be heat-sealed, sewn or bonded after cutting, the tolerance should be set so that the later process cannot push the component out of specification, which usually means allowing for the movement the finishing step introduces rather than measuring a finished part against a drawing made for a flat component.`
+  },
+  {
+    q: 'What is the minimum order quantity for custom die-cut ribbon, and why does it vary so much?',
+    a: `Minimum order quantity for die-cut ribbon is driven by three numbers: the number of distinct dies required, the setup time each die consumes per run, and the total component count. A single die with one shape on one width with one colourway can often be run from a few hundred pieces, because the die cost and the setup are amortised over a short run and the ribbon itself is not constrained. Adding a second colourway or a second width usually means a second production run and therefore a second setup, which is where MOQ pressure comes from. Adding three or four shapes with a common die multiplies the setup again. A practical rule is that a single-shape programme can often start at five hundred pieces per colour, a two-shape programme at one thousand pieces per colour, and a multi-shape programme with several colourways at two thousand pieces per colour or more, and these are indicative rather than fixed, because the factory's press capacity, the material and the finishing route all move the number. The more useful question for a buyer is not what the MOQ is but what the MOQ buys, namely whether the price includes the tooling amortised across the run. Ask for the unit price at two volumes, for example at your pilot quantity and at your forecast annual volume, and see whether the difference is only material and labour or whether the die amortisation also unwinds. In most cases it does unwind, and that is the number to plan the programme around.`
+  },
+  {
+    q: 'How do I prevent die-cut ribbon defects from reaching my assembly line?',
+    a: `Die-cut ribbon has a small, well-defined list of failure modes, and each one has a corresponding control. Out-of-shape parts usually mean a worn or damaged blade, and the control is scheduled die maintenance with a defined replacement interval and a set of worn-die reference shapes kept at the factory. Frayed or torn edges on a synthetic construction usually mean a blade that has gone blunt or a feed misalignment, and the control is a first-article check against a sealed standard shape, followed by in-process checks at a stated frequency rather than only at the end of the run. Inconsistent edge appearance between lots usually means the heat-sealing temperature or dwell time has drifted, and the control is a recorded parameter with a check at the start of each run. Delamination or adhesive failure on backed or laminated ribbon usually means the adhesive specification or the curing time is wrong, and the control is a defined bond strength test on a defined number of pieces per lot. Missing or doubled shapes in a count usually mean an operator or counting error rather than a machine fault, and the control is a documented piece count reconciled against the reel quantity. The most important control is the sealed standard shape, kept at the factory and referenced by number on the inspection instruction, because it converts an argument about whether a part is acceptable into a comparison against a known object. Without it, every rejection is a matter of opinion.`
+  },
+  {
+    q: 'How should I specify cutting and finishing on a ribbon purchase order?',
+    a: `Write the cutting and finishing requirements as a separate, self-contained section rather than as scattered notes, because cutting is where a ribbon order most often goes wrong. The section should carry the shape or shapes with a reference dimension table, a stated tolerance, the material and width the shape is cut from, the edge treatment, the quantity per shape and per colourway, the number of dies required and who supplies the artwork, the finished component dimensions including any fold or hem, the packing format, and the reference to the approved sample and to the die number. Alongside the section, two documents do most of the work. The first is a dimensioned drawing or vector file per shape, which is what makes the die reproducible and is the single most valuable thing a buyer can supply. The second is a physical first-article sample, sealed and numbered, which is what makes inspection objective. Both should be referenced with version numbers on the order and on the inspection instruction. When the order is placed, confirm three things in writing: the die count and the die numbers allocated to your part references, the amortisation assumption behind the unit price, and the lead time for die production, which is normally separate from and additional to the ribbon production lead time and is the item most likely to delay your launch. A cutting specification that has no drawing, no sample reference and no die number is not a specification, and the supplier will fill those three gaps with its own assumptions.`
+  }
+];
+
+// ---------------------------------------------------------------- body content
+const BODY = `
+    <article>
+        <h1>${H1}</h1>
+<p class="lede">Ask a ribbon buyer what they wish they had specified at the start of a programme and a surprisingly common answer is about shape rather than colour. Colour is the detail people agonise over, because colour is visible in a way that is easy to describe and easy to approve. Shape is the detail that quietly determines whether the product works. A bow that is two millimetres too long in a gift box does not read as a slight imperfection, it reads as a manufacturing fault to the customer who opens it, and it is a fault that cannot be corrected downstream because the component is already cut. The same is true of a floral head, a shaped tag, a petal assembly, a logo cut-out and any of the several hundred other places where ribbon is converted from a flat roll into a discrete, finished part. In every one of those cases the cutting and the edge finishing are not a production detail, they are a specification with tolerances, a tooling cost, a lead-time component and a failure mode, and they deserve to be written down with the same care that buyers give to print registration or dye-lot consistency. This guide covers what die-cutting actually involves, which cutting method suits which construction, what the tooling really costs, how to choose an edge treatment, what tolerances are achievable and how to specify the whole thing so that the pieces arriving at your assembly line match what you approved on your desk.</p>
+
+<p>There is a second reason to get this right, and it is commercial. Custom ribbon programmes are usually justified on the basis of the finished product rather than the material, because the value a buyer captures is brand recognition, a distinctive shape, a seasonal motif or a proprietary packaging element that a competitor cannot copy. The cutting operation is where a significant share of that value is either created or destroyed. A shape that is technically accurate but has a raw, fraying edge reads as cheap. A shape with a clean, sealed, slightly firm edge reads as considered and premium, and it survives being handled by a customer, shipped in an online parcel and unpacked by someone who has never seen it before. That difference is not visible in the photograph of the swatch, which is why it is so often missed, and it is not something you can fix by talking to the factory afterwards, because the edge treatment has to be chosen before the tooling is cut. Getting it right is therefore not a matter of tightening a process after the fact. It is a matter of writing the specification properly the first time.</p>
+
+<p>A third consideration is specific to how ribbon is actually bought in 2026. Buyers increasingly work with a supplier who will run the same programme across multiple markets, multiple pack formats and multiple seasonal colourways, sometimes with different die sizes in each. That is efficient for both sides, but it creates a tooling-management risk that does not exist in a one-product, one-colour world. Each die is a physical object with a shape, and if the mapping between die and part reference is not recorded, the risk is that a shape gets cut on the wrong die at some point in year two, and the error is invisible until the finished goods reach a customer. It is worth saying plainly that most die-cut defects are not caused by bad machines or bad material. They are caused by a missing link in the paperwork between the drawing, the die and the order. This guide therefore treats documentation and traceability as part of the cutting process rather than as an administrative layer on top of it.</p>
+
+<h2>What die-cutting in ribbon production actually means</h2>
+<p>Die-cutting is a converting operation. The supplier takes ribbon or web in continuous form, either from a roll or directly from a winding or slitting line, and converts it into discrete shapes by forcing a shaped blade through the material under pressure. The blade sits in a die, which is a block of hardwood, composite board or steel into which the cutting rule has been inserted and fixed. The rule is a hardened steel strip bent to the shape of the part, and it is sharpened and honed so that the cut is clean rather than torn. The press supplies the force, the die provides the geometry, and the feed system advances the material to a fixed pitch so that every part is identical. The waste between parts, known as the skeleton or web, is either retained for lower-grade use or discarded, and for wide or expensive material such as velvet or metallic ribbon that skeleton is a meaningful part of the cost calculation, which is one reason wide-shape programmes often use a nested die layout rather than a single shape per sheet.</p>
+
+<p>It is important to distinguish die-cutting from the several other operations that buyers sometimes group together under the same heading, because they have different tooling, different tolerances and different costs. Die-cutting produces a shape with a cut edge. Heat cutting produces a straight edge that has been thermally sealed at the moment of cutting, with no tooling cost at all. Slitting produces narrow widths from a wider web, with a selvage that is cut rather than woven. Creasing and folding produce a folded component in one pass, with the fold functioning as a soft hinge. Welding or bonding produces a laminated or bonded component from two or more layers. And hemming produces a folded and stitched edge. A finished ribbon component, for example a decorative bow with a stitched centre band and heat-sealed tails, may pass through four of these operations in sequence. When you write the specification, the language needs to distinguish between them, because "cut to shape" on a purchase order can legitimately be read as die-cutting, guillotining or laser cutting, and the three produce visibly different results at different prices.</p>
+
+<p>For ribbon specifically, the material characteristics that make this category interesting are the same ones that make it difficult. Satin and grosgrain are stable and cut cleanly. Organza and sheer fabrics distort easily under the pressure of a press and need a backing board or a slower feed to avoid puckering. Velvet has a pile that the blade crushes, so the rule must be very sharp and the press pressure carefully set, and the cut edge of velvet will never match the sheen of the pile, which is why velvet shapes are usually overlocked rather than left raw. Burlap and mesh have loose constructions that shift under pressure and need a slower, firmer cut. Wired ribbon introduces a second, stiffer element that changes the cutting geometry entirely and makes die shape design considerably more constrained. And metallised and holographic film, which are common in gift packaging, melt rather than cut cleanly, which is exactly the case where heat cutting or laser is the correct answer rather than a steel rule.</p>
+
+<h2>The main cutting methods, and how to choose between them</h2>
+<p>Buyers tend to arrive at a factory with a mental picture of how the ribbon should look and no view at all on how it will be cut. That gap is where cost and quality surprises originate. The four methods below cover the overwhelming majority of commercial ribbon converting, and each has a clear territory.</p>
+
+<h3>Die-cutting with a steel rule blade</h3>
+<p>This is the default and, for most programmes, the right answer. The steel rule die is accurate, repeatable, fast at volume, and works on essentially every ribbon construction including mesh, velvet, organza, burlap and wired ribbon. It produces a clean cut edge with no heat and no burn. The limitation is geometry: the rule must be able to travel through the material without the material deflecting it, which means very tight inner radii on concave features become difficult, and very fine detail becomes fragile. In practice a die cutter will tell you that a shape has a minimum radius of roughly one to two millimetres depending on the material thickness and the press, and any request for a sharp concave notch or a hairline cut should be raised early rather than discovered at die proofing. The tooling cost is modest and the piece cost at volume is low, which makes this the method for any shape you intend to repeat.</p>
+
+<h3>Laser cutting</h3>
+<p>Laser cutting is the answer for very fine detail, for single-ply or thin material where a steel rule would distort it, and for prototyping where a die would not be justified. It is precise, it needs no physical tool for each shape, and it produces a clean sealed edge on many synthetics as a by-product of the process. Its weaknesses are cost and edge character. The cost per piece is higher than die-cutting at volume because the process is slower. The edge character is where buyers get disappointed: on some synthetics the laser seals or slightly scorches the edge, which changes the hand-feel and can produce a visible line, and on matte or textured surfaces this is noticeable. If the appearance of the edge matters to the programme, laser-cut samples should be approved against the same standard as die-cut samples, not assumed equivalent.</p>
+
+<h3>Heat cutting</h3>
+<p>Heat cutting uses a heated blade, and it is the correct method whenever fraying is the concern. The blade melts and seals the fibres as it passes, producing an edge that will not fray and that has a slightly firmer hand. It is fast, requires no tooling cost for straight cuts, and is the standard method for polypropylene and polyester ribbon of narrow widths. It is not suitable for natural fibres, since there is nothing to melt, and it is not ideal for a programme where the edge will be visible and a crisp cut is required, because a sealed edge is never as sharp as a mechanical cut. Heat cutting also has a long history in the industry and is worth understanding commercially, because a supplier may quote a heat-cut price for a straight-edge programme that includes the fraying protection a buyer had not thought to ask for.</p>
+
+<h3>Knife, guillotine and straight cuts</h3>
+<p>Cutting to length with a knife or guillotine is the simplest operation in the category and carries no tooling cost, so it is worth asking whether a programme needs die-cutting at all before specifying it. There is a cost crossover, and it depends on the shape complexity, but a program that needs a straight cut to length with a folded end and a hand-stitched centre band does not need a die for the length component. Splitting a programme into the operations that genuinely need shaping and the operations that do not is one of the quickest ways to reduce a quote without reducing quality.</p>
+
+<h2>Tooling: what it costs and how it should be controlled</h2>
+<p>Tooling is the line item most likely to surprise a buyer, largely because it is quoted in wildly different ways. Some factories absorb it into the unit price and never mention it. Others list it as a separate charge. A transparent quote separates three things: the die or dies themselves, the proofing and sample cost, and the amortisation assumption that spreads the die cost across the first order. A simple single-shape die for a standard width often falls in the low tens of US dollars. A multi-level die producing several shapes or sizes from one sheet, or a die for a large, complex or deep-relief silhouette, can reach several hundred. Magnetic dies, used where the shape set changes frequently enough that physical tooling would never amortise, are normally rented per run or charged per programme rather than purchased, and for a seasonal or multi-market programme they are often the more sensible commercial choice even where they appear more expensive on paper.</p>
+
+<p>Two commercial protections are worth more than the money saved by arguing about the die fee. The first is ownership. The buyer should own the die, or hold the right to take delivery of it, so that a second source can be qualified without paying for new tooling and so that the programme is not held hostage by a single supplier's tooling inventory. The second is identification. Every die should carry a unique tool number, that number should be linked to the buyer's part reference, and the mapping should exist in a record that both parties can see. A die stored without a reference tag is a die that will eventually be used on the wrong programme, and because the shape is right even when the die is the wrong one, the error usually passes inspection and is caught by the customer. For buyers running the same shape across several colourways, the die count question matters too: one die can often be used across all colourways, but each additional width requires its own die, and a design that crosses widths is sometimes better drawn once as a nested multi-width die than as separate dies, though nesting costs more upfront and ties up more steel.</p>
+
+<p>On lead time, tooling is a separate clock. Die production typically adds several days to a week depending on the complexity and the supplier's workload, and it sits in front of, not inside, the ribbon production lead time. When buyers ask a factory for a launch date and receive a single number, it is worth asking which clock that number is on. A programme that misses its retail window because the die was late is a disappointment that no amount of relationship capital fixes, and the cheapest mitigation is to release the artwork for tooling at the same time as the order rather than after the colour and print have been approved.</p>
+
+<h2>Edge treatments and how to choose one</h2>
+<p>Edge treatment is the single most visible quality signal on a cut ribbon component, and it is also the decision most often made by default rather than by specification. The options are heat-sealed, clean cut, cut-and-overlocked, pinked, and folded-and-stitched, and each answers a different requirement.</p>
+
+<p><strong>Heat-sealed</strong> edges suit most synthetic gift packaging and craft ribbon. The seal prevents fraying, gives the edge a stable body, and improves how the ribbon folds and holds a crease, which matters when the component will be formed into a bow or a loop. The trade-off is that a sealed edge is slightly thicker and slightly less crisp than a mechanical cut, and on a matte fabric the seal can be visible if the temperature is not well controlled.</p>
+
+<p><strong>Clean cut, raw</strong> edges suit any component that will be covered, backed, hidden inside a finished assembly, or stitched on both sides so that the raw edge is enclosed. They cost nothing and they cut cleanly on stable constructions. They are the wrong choice for a component that will be handled loose in a pack or displayed, because they will fray in handling and the fray will be visible.</p>
+
+<p><strong>Cut and overlocked</strong> edges are used where the construction is natural fibre, cotton, linen, jute or burlap, because overlocking controls fraying on natural fibres in a way that heat cannot. The overlock thread is visible on the finished edge, so it becomes a design element, and in a visible position the thread colour has to be specified and approved like any other colour.</p>
+
+<p><strong>Pinked</strong> edges are a zigzag cut and are essentially a decorative option. They consume a small amount of extra material and add a small amount of cost, and they are rarely used in commercial packaging but do appear in craft and seasonal programmes.</p>
+
+<p><strong>Folded and stitched</strong> edges give a premium, finished appearance and are the right treatment for garment trim, high-visibility ribbon in a finished assembly, and anywhere a raw edge would read as incomplete. Two consequences follow that should be in the specification. The first is that a hem adds material and labour and therefore changes the finished width and the finished length, so tolerances must be specified against the finished component and not the raw ribbon. The second is that stitching introduces its own variability, stitch density, thread size and thread tension all affect the finished dimension and the hand-feel, and these should be specified or they will be chosen by the operator.</p>
+
+<p>Whatever the choice, the practical control is identical: the edge must appear on the physical sample that is approved, because a written description of an edge is much less precise than a piece of ribbon you can rub with your thumb. Ribbons with different edges also behave differently in the folding and knotting that follow, so approving the edge on the sample is approving the finished behaviour, not only the look.</p>
+
+<h2>Tolerances: how to write them so they can actually be measured</h2>
+<p>Cutting tolerance is where a specification most often becomes unusable, not because the supplier cannot hold it, but because the two parties are measuring different things. The rules that make a tolerance workable are short. Specify tolerances in millimetres, not in percentages. State the measurement points, for example overall length measured parallel to the longer axis and overall width at the widest point. State the condition of measurement, including temperature and whether the part is relaxed, and state it explicitly enough that two people would measure the same way. State what the tolerance applies to, since a component has features that matter and features that do not, and a single global tolerance is usually both too tight in one place and too loose in another.</p>
+
+<p>A reasonable commercial baseline for a die-cut ribbon component is plus or minus one millimetre on overall length and width, plus or minus one degree on orientation, and plus or minus half a millimetre on feature-to-feature positioning where the shape has more than one interacting element, measured on a finished component that has been relaxed at room temperature for a minimum of four hours. That relaxation clause is not pedantry. A component cut under tension from ribbon on a roll will change dimension once it is released, and in some constructions it will change measurably in the other direction as the elastic recovery in the weave relaxes. If the factory measures on the roll and the buyer measures flat, or vice versa, the two readings can differ by more than the tolerance itself, which produces a rejection with no technical basis and usually a bad working relationship as a result. Where a feature must mate with another part, tighten the tolerance on the mating feature and leave the free edges generous, and write down which is which, because a global tolerance tightened to protect a joint will force the buyer to pay for precision on features nobody sees. And where the component will be heat-sealed, sewn or bonded after cutting, set the tolerance so that the downstream process cannot push it out of specification, which in practice means measuring and specifying the finished assembly rather than the flat cut piece.</p>
+
+<h2>Minimum order quantities and how volume changes the price</h2>
+<p>MOQ for die-cut ribbon is not set by the ribbon, it is set by the combination of die count, setup time per die per run, and total component count. A programme with one shape on one width in one colourway can often run from a few hundred pieces, because the die cost and the setup spread over a short run and the ribbon supply itself is not the constraint. A second colourway usually means a second run and a second setup. A second width requires a second die. A three-shape programme with two colourways and two widths is six cutting operations across at least two dies, and each carries its own setup. As an indicative guide, a single-shape programme often starts around five hundred pieces per colour, a two-shape programme around one thousand per colour, and a multi-shape, multi-colour programme at two thousand per colour or more, but the real number moves with press capacity, material and finishing route, and the useful question is what the factory will commit to rather than what a general rule suggests.</p>
+
+<p>The more valuable conversation is about price sensitivity. Ask for the unit price at two volumes, the pilot quantity and the forecast annual quantity, and see what actually changes. If the difference reflects only material and labour, then you are looking at a fairly pure volume curve. If the die amortisation also unwinds, then the pilot order is carrying a cost that will disappear, and the programme should be planned around the later price rather than the first invoice. The other question worth asking is whether a magnetic die or a laser route would be more economical than a steel rule for a shape set that will change, because a factory that is genuinely evaluating the programme will tell you when a cheaper technical route exists. That conversation happens far more often on the second or third programme than on the first, which is another reason to put the tooling and the amortisation terms in writing from the start rather than reconstructing them later.</p>
+
+<h2>The defect modes you are actually buying insurance against</h2>
+<p>Die-cut ribbon has a short and well-understood list of failure modes, and each maps cleanly to a control. Knowing them is worth more than knowing a general quality standard, because it lets you write an inspection instruction that checks the right things.</p>
+
+<p><strong>Out-of-shape parts</strong> almost always mean a worn or damaged blade rather than a machine fault, and the control is scheduled die maintenance with a defined replacement interval, supported by a set of worn-die reference shapes kept at the factory so that a finisher can judge blade condition visually.</p>
+
+<p><strong>Frayed or torn edges</strong> on a synthetic construction mean a blunt rule or a feed misalignment. The control is a first-article check against a sealed standard shape at the start of each run, followed by in-process checks at a stated frequency rather than only at the end, because a die that goes off during a long run produces a lot of parts that all need sorting.</p>
+
+<p><strong>Inconsistent edge appearance between lots</strong> means the heat-sealing temperature or dwell time has drifted. The control is a recorded parameter with a verification at the start of every run, and a documented adjustment procedure when the parameter is out of range.</p>
+
+<p><strong>Delamination or adhesive failure</strong> on backed and laminated ribbon means the adhesive specification or the curing time is wrong. The control is a defined bond-strength test on a defined number of pieces per lot, and a stated ambient condition for the test, since humidity changes the result on many constructions.</p>
+
+<p><strong>Missing or doubled shapes in a count</strong> are far more often a counting or operator error than a machine fault, and the control is a documented piece count reconciled against the reel quantity before the components move to packing.</p>
+
+<p><strong>Wrong shape on the order</strong> is a tooling traceability failure, not a machine failure, and it is prevented entirely by the tool-number discipline described earlier. This is the failure mode with the highest customer-facing cost, because it is invisible to a buyer checking quantities and visible immediately to a customer opening the pack.</p>
+
+<p>Behind all of these sits the single most useful document a buyer can specify: a sealed standard shape, kept at the factory, referenced by number in the inspection instruction, and produced from the same die and the same edge treatment as the production lot. Without it, every rejection is an argument about perception. With it, every rejection is a comparison against a known object, and the conversation stays technical.</p>
+
+<h2>Writing the cutting and finishing section of a ribbon purchase order</h2>
+<p>Cutting and finishing should be a self-contained section of the order, not a collection of notes appended across several documents, because cutting is where a ribbon order most often goes wrong. The section should carry the shape or shapes with a reference dimension table, a stated tolerance and its measurement conditions, the material and width each shape is cut from, the edge treatment for each shape, the quantity per shape and per colourway, the number of dies required, the artwork route and who owns the file, the finished component dimensions including any fold or hem, the packing format, and the reference to both the approved sample and the die number. Where a shape is used in more than one market, say explicitly whether the shape is identical across markets or whether it is scaled, because a scale change alters the die and is not a print change.</p>
+
+<p>Two supporting documents do most of the work. The first is a dimensioned drawing or vector file for each shape, which is what makes the die reproducible and which is the single most valuable thing a buyer can supply to a factory, since a die cut from a vector file is dimensionally exact while a die cut from a physical sample carries the sample's own distortions. The second is a physical first-article sample, sealed and numbered, which is what makes inspection objective. Both should carry version numbers on the order and in the inspection instruction, and when either changes, the order should say what happens to the die, because a new drawing does not always mean a new die and the factory should not have to guess.</p>
+
+<p>At the point of order, three things should be confirmed in writing. The die count and the die numbers allocated to your part references. The amortisation assumption behind the unit price, including whether tooling is charged once or recovered over a stated volume. And the die production lead time, stated separately from the ribbon production lead time, with the artwork release date that it depends on. The other two pieces of advice are smaller but useful. Specify piece counts per carton rather than total quantities wherever possible, because packing directly into your carton format eliminates a repacking step that is slow and adds handling damage. And request the worn-die reference shapes with the delivery, because they are your evidence that the die being used is the die that was approved, and because they let your own QC staff assess the question without a factory visit.</p>
+
+<p>Finally, separate the programme from the die. A die is an asset with a useful life, a maintenance history and a storage location, and it will outlive the first and probably the second version of the artwork it was cut from. Recording the die number against the part reference means the next programme can use it directly, the factory does not have to re-derive it, and if you ever qualify a second source you are not starting from zero on tooling. It is a small administrative habit with a disproportionate effect on the cost and the speed of everything that follows.</p>
+
+<p>Xiamen Meisida Decoration Co., Ltd. has been manufacturing ribbon, bows and decorative trims in Xiamen, China since 2007, supplying brand owners, retail buyers and importers in more than fifty countries. The company operates its own production facility with in-house weaving, dyeing, printing, finishing, die-cutting and assembly, and supports OEM and ODM programmes including custom ribbon, bows and decorative accessories, with OEKO-TEX, BSCI, SEDEX, ISO 9001 and FSC credentials on file. If you are planning a die-cut or shaped ribbon programme and want a supplier who can quote tooling, edge treatment and cutting tolerances clearly, contact us to discuss the shapes, the volumes and the specification you need.</p>
+
+        <h2>FAQ — Custom ribbon die-cutting and edge finishing</h2>
+${FAQ.map(f => `            <div class="faq-item"><p class="faq-q">${f.q}</p><p class="faq-a">${f.a}</p></div>`).join('\n')}
+        </article>
+`;
+
+// ---------------------------------------------------------------- assemble
+const ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": `${URL}#article`,
+      "headline": H1,
+      "description": DESC,
+      "image": ["https://msdribbon.com/assets/images/cat-satin-ribbons.jpg"],
+      "datePublished": DATE,
+      "dateModified": DATE,
+      "inLanguage": "en",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": URL },
+      "author": {
+        "@type": "Organization",
+        "name": "MSD Bow",
+        "legalName": "Xiamen Meisida Decoration Co., Ltd.",
+        "url": "https://msdribbon.com/",
+        "email": "admin@msdribbon.com",
+        "telephone": "+8613779951780",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "7th Floor, No. 16, Tong'an Industrial Park, Meixi Road, Tong'an District",
+          "addressLocality": "Xiamen",
+          "addressRegion": "Fujian",
+          "postalCode": "361100",
+          "addressCountry": "CN"
+        }
+      },
+      "publisher": { "@id": "https://msdribbon.com/#organization" },
+      "about": [
+        "Custom ribbon die-cutting",
+        "Ribbon edge finishing",
+        "Die-cut ribbon components",
+        "Ribbon tooling cost",
+        "Ribbon cutting tolerance",
+        "OEM ribbon converting"
+      ],
+      "wordCount": 0
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${URL}#faq`,
+      "mainEntity": FAQ.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    }
+  ]
+};
+
+const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${TITLE}</title>
+    <meta name="description" content="${DESC}">
+    <link rel="canonical" href="${URL}">
+    <link rel="alternate" hreflang="en" href="${URL}">
+    <link rel="alternate" hreflang="x-default" href="${URL}">
+    <meta property="og:title" content="${H1}">
+    <meta property="og:description" content="${DESC}">
+    <meta property="og:url" content="${URL}">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://msdribbon.com/og-image.jpg">
+    <meta property="og:image:width" content="1424">
+    <meta property="og:image:height" content="752">
+    <meta property="og:image:alt" content="Xiamen Meisida Decoration Co., Ltd. - custom ribbon and bow manufacturer in Xiamen, China">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${H1}">
+    <meta name="twitter:description" content="${DESC}">
+    <meta name="twitter:image" content="https://msdribbon.com/og-image.jpg">
+    <meta property="article:published_time" content="${DATE_ISO}">
+    <meta property="article:modified_time" content="${DATE_ISO}">
+    <meta property="article:author" content="Xiamen Meisida Decoration Co., Ltd.">
+    <meta property="article:section" content="Sourcing Guides">
+    <meta property="article:tag" content="custom ribbon manufacturer">
+    <meta property="article:tag" content="ribbon die cutting">
+    <meta property="article:tag" content="ribbon edge finishing">
+    <meta property="article:tag" content="custom ribbon tooling">
+    <meta property="article:tag" content="ribbon converting">
+    <meta property="article:tag" content="OEM ribbon guide">
+    <meta property="article:tag" content="ribbon manufacturing">
+    </head>
+    <meta name="google-site-verification" content="BYcK-w4SYVEjTT9PHjXBP_KeIBrGtAr9PHjXBP_KeIBrGtAr9rSXwwJrlNJo" />
+    <meta name="msvalidate.01" content="ECF29653135740CD77EEF5074F931DF4" />
+
+    <script type="application/ld+json">
+${JSON.stringify(ld, null, 2)}
+    </script>
+${BODY}
+</body></html>
+`;
+
+// word count on visible body text
+const text = html
+  .replace(/<script[\s\S]*?<\/script>/g, ' ')
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ')
+  .replace(/\s+/g, ' ').trim();
+const wordCount = text.split(/\s+/).length;
+ld['@graph'][0].wordCount = wordCount;
+
+// rebuild with the corrected wordCount embedded
+const finalHtml = html.replace(
+  /"wordCount": \d+/,
+  '"wordCount": ' + wordCount
+);
+
+const outDir = path.join(__dirname, 'blog', SLUG);
+fs.mkdirSync(outDir, { recursive: true });
+const outFile = path.join(outDir, 'index.html');
+fs.writeFileSync(outFile, finalHtml, 'utf8');
+
+console.log('OK ->', outFile);
+console.log('words:', wordCount, '| faq:', FAQ.length, '| desc len:', DESC.length);
