@@ -1,0 +1,258 @@
+#!/usr/bin/env node
+// build-article-printing.js — 生成 "Custom Ribbon Printing Methods" 文章
+// 输出: blog/custom-ribbon-printing-methods-guide/index.html
+
+const fs = require('fs');
+const path = require('path');
+
+const SLUG = 'custom-ribbon-printing-methods-guide';
+const URL = `https://msdribbon.com/blog/${SLUG}`;
+const DATE = '2026-11-16';
+const DATE_ISO = '2026-11-16T08:20:00+00:00';
+
+const TITLE = 'Custom Ribbon Printing Methods Guide: Screen, Heat Transfer & Digital | MSD Ribbon';
+const H1 = 'Custom Ribbon Printing Methods: A Buyer Guide to Screen, Heat Transfer, Digital and Sublimation';
+const DESC = 'Custom ribbon printing methods guide for OEM buyers: screen, heat transfer, digital and sublimation compared on cost, minimums, durability and colour.';
+
+const FAQ = [
+  {
+    q: 'Which printing method is best for custom ribbon, and how do I choose?',
+    a: `The right method depends on four variables: the number of colours in the design, the total order quantity, the substrate, and how the finished ribbon will be used. One or two solid colours on a large volume of satin or grosgrain is cheapest and most durable by rotary screen printing. Many colours, gradients, fine photographic detail or short runs are better served by digital printing, which has no screen cost and no colour separation. A single-colour or simple logo on a woven synthetic that must survive washing and abrasion is often best served by heat transfer or sublimation, because the colour becomes part of the fibre rather than a layer sitting on top of it. Velvet is a special case: the pile makes screen and digital printing unsuitable, so reflective or flock printing on velvet is the normal route. The most useful question to ask is what changes the economics: a screen costs a set-up fee per design and then becomes cheap per metre, while digital printing has no set-up fee but a higher cost per metre, which means the two curves cross at a specific volume for a specific colour count. Ask a supplier to quote both routes for your actual design and your actual volume rather than assuming one method is universally better.`
+  },
+  {
+    q: 'What is the minimum order quantity for printed custom ribbon?',
+    a: `Minimum order quantity for printed ribbon is set by the setup cost that has to be recovered, and the setup cost differs by method. Rotary screen printing carries a screen preparation and engraving charge per colour, so the recovery volume for a one-colour design on a 25-millimetre ribbon might be a few hundred metres, while the same design in six colours across three widths can require several thousand metres before the setup has unwound. Digital printing has no screen cost, so its minimum is generally lower, but the per-metre cost is higher, and many factories still apply a practical minimum of a few hundred metres simply to cover the pre-production setup and the approval process. Heat transfer and sublimation sit between the two: they involve making a transfer or a plate per design, so the minimum is set by that cost. The practical advice is to ask for the price at two volumes, your pilot quantity and your forecast annual quantity, and check whether the difference is only material and labour or whether the setup charge also disappears. If the setup unwinds, then the pilot order is carrying a cost that will not exist at scale, and the programme should be planned around the later price.`
+  },
+  {
+    q: 'How do screen printing and digital printing differ in colour accuracy and durability?',
+    a: `Screen printing produces a flat, solid, opaque deposit of ink, and because each colour is a separate physical deposit it gives excellent opacity and good coverage on textured substrates, which is why it remains the workhorse for solid-colour ribbon. Its colour accuracy is governed by the ink batch, so it is consistent within a dye lot and across a production run but can drift between batches if the ink is mixed to a recipe rather than to a measured standard. Digital printing reproduces colour directly from a digital file, which means gradients, shading and photographic detail are achievable and the colour is repeatable from a stored profile across runs and reorders. Its weakness on ribbon is that ink sits on the surface, so on a high-shine satin or a textured velvet the ink can look flatter than the substrate and can crack or scuff if the ribbon is flexed sharply. For durability, the ranking depends on the test: heat transfer and sublimation give the best result because the colour is inside the fibre, screen printing gives a strong result because the deposit is thick, and digital printing gives the weakest result against repeated flexing and abrasion. Where the ribbon will be washed, rubbed, worn or used in hair, the durability ranking matters more than the print quality ranking and should drive the decision.`
+  },
+  {
+    q: 'How many colours can be printed on ribbon, and why does colour count change the price?',
+    a: `Technically, a printed ribbon can carry a dozen or more colours, but colour count is one of the strongest cost drivers in the whole programme and the reason is mechanical rather than aesthetic. Rotary screen printing applies one colour per screen, so each additional colour requires another screen, another engraving or plate, another ink drum, another colour changeover on the machine and another pass through the dryer. Those fixed costs are recovered across the run length, so the price per metre climbs in steps as each colour is added rather than in a smooth curve. A practical guideline for commercial work is that one to three colours is the economical range for large volumes, four to six colours is workable if the volume is substantial, and beyond that most buyers are better served by digital printing, which carries no per-colour setup. There is also a registration issue: each colour pass can shift slightly relative to the others, so on a fine multi-colour logo the tolerance between colours matters, and very fine detail in a late colour can land outside the earlier colour's edge. If a design has many colours but only one or two appear on a given ribbon, it is often cheaper to split the artwork and print fewer colours on more widths than to print the full palette on every width.`
+  },
+  {
+    q: 'What artwork should I supply, and what happens if I supply the wrong file?',
+    a: `Supply vector artwork in EPS, PDF or AI format, with all text converted to outlines and any transparency flattened, and specify the physical size of the repeat against the ribbon width. A vector file is what makes the print reproducible, because a rotary screen is cut from the artwork directly, and a file that arrives as a low-resolution raster will be rejected or redrawn by the factory at your cost. If you do not have print-ready artwork, most factories offer artwork preparation as a chargeable service, and it is worth paying for it because a factory that redraws artwork from a logo usually has to rebuild it as spot colours rather than process, which changes both the cost and the colour outcome. Two practical points. First, decide the repeat length before the artwork is finalised, because the repeat is fixed by the screen circumference and a change of repeat length means a new screen, not just a rescale. Second, approve a physical strike-off, a production sample printed on the actual ribbon, rather than approving from a digital mock-up, because only the strike-off shows how the ink sits on the sheen, how the colour shifts under retail lighting and how the repeat lines up along the roll.`
+  },
+  {
+    q: 'How should printed ribbon be inspected and what tolerances should I specify?',
+    a: `Inspection of printed ribbon has four layers and all four should be in the inspection instruction. The first is registration, meaning colour-to-colour position, specified as a tolerance in millimetres rather than as a qualitative description, and measured at a stated magnification. The second is colour, which should be approved against a sealed physical reference rather than against a Pantone chip on paper, because a coating on a swatch sheet and the same pigment printed on satin do not match, and a ribbon printed in a slightly different hue than the sign-off can fail a retailer's visual standard even when the factory has matched the swatch. The third is print coverage and quality: gaps, streaks, skips, ink build-up on the reverse, bleed at the edges of the design and contamination between colours. The fourth is the mechanical quality of the ribbon itself, including width, thickness, edge quality and the absence of redeformation, which is covered in general ribbon inspection but must still be checked on the printed goods because printing introduces tension and heat. Practical tolerances for commercial printed ribbon are plus or minus zero point three millimetres on registration for fine work and plus or minus zero point five millimetres for general work, plus or minus one millimetre on ribbon width, and a stated defect class limit. Define defect classes for critical, major and minor defects with a numerical threshold, for example critical zero tolerance, major zero point five per cent and minor two per cent on the AQL line agreed in your inspection plan, and specify the sampling standard and the conditions of inspection.`
+  },
+  {
+    q: 'Can printed ribbon be recycled, and what does sustainable printing mean in practice?',
+    a: `Printed ribbon can absolutely be recycled, but it is more complicated than for unprinted ribbon because the printing route changes the material's recyclability. Water-based and plastisol inks used in screen printing change the composition of the polyester or the paper content of the ribbon, and in most recycling streams a printed ribbon is handled as a lower-grade or non-recyclable input because the sorting equipment cannot separate the ink. Two routes are meaningfully better. The first is RPET, recycled polyester, which starts life as post-consumer bottle material and can be recycled again, and where a buyer specifies a recycled-content ribbon and a supplier uses a mono-material construction with a compliant ink, the loop is much closer to closed. The second is paper and paper-based ribbon, which is widely recyclable when printed with water-based or soy-based inks and is the most defensible choice where the ribbon is single-use and presented to a customer at the point of consumption. A third and increasingly common route is print-free decoration, which means the colour and the pattern come from the weave or the yarn itself rather than from ink, and which removes the print step from the life cycle entirely. Whichever route a programme takes, the useful practice is to specify the ink chemistry alongside the substrate in the purchase order, ask for the compliance documentation that covers the ink rather than only the ribbon, and confirm that the certification on file actually covers the printed product, because many certificates in the industry cover the base fabric and pre-printed goods only.`
+  }
+];
+
+const BODY = `
+    <article>
+        <h1>${H1}</h1>
+<p class="lede">Printing is where a custom ribbon programme stops being a length of material and starts being a branded component. It is also the point in the process where the cost curve behaves in a way most buyers are not expecting. A quote for one colour and a quote for six colours can differ by more than a factor of three, and the difference is not margin, it is the mechanical reality of putting six separate colour deposits onto one ribbon. Meanwhile the quality differences between methods are subtle enough that they are rarely visible in a sample photograph and dramatic enough that they decide whether the finished product survives a season of retail handling. Buyers who understand four things about ribbon printing avoid most of the surprises: how the methods differ mechanically, what the setup cost does to the minimum quantity, where the durability sits, and what colour accuracy actually means on a coated or textured surface. This guide sets out the four principal printing routes used in commercial ribbon production, explains what each one does well and where each one fails, walks through the artwork and approval process, and shows how to write a printed-ribbon specification that can be inspected objectively rather than argued about. It is written for brand owners, retail procurement teams and importers who are commissioning printed ribbon rather than for converters looking to improve their own setup.</p>
+
+<p>There is a second reason this topic is worth getting right before the first order rather than after it. Printing decisions lock in a supplier relationship more tightly than almost any other choice in the programme, because a printed ribbon carries the buyer's own artwork on it, and the artwork, the repeat length, the colour standard and the print method together become a single qualified combination that is difficult to move. A second supplier attempting to match a print made on a specific machine with a specific ink system will produce something that is close, and close is not what a retail visual standard requires. The practical consequence is that the printing decision should be made early, with the supplier you intend to stay with, and it should be made against a written specification. Once a programme is running with a supplier on an agreed print standard, the commercial risk of the programme is low, the quality is predictable and the reorder process becomes routine. If instead the print method is chosen by accident, by whoever quoted fastest or by whichever sample looked best in a photograph, the programme will carry a hidden cost that only appears when a second source is needed, when a colour drifts between batches, or when the ribbon fails a wash test that nobody asked for until the customer returned it.</p>
+
+<p>A note on scope before going further. This guide concerns printed ribbon, and specifically printed decorative ribbon, trims and bows made from polyester satin, grosgrain, organza, velvet, burlap and paper-based constructions. It does not cover woven labels, which are made by a different process entirely, nor does it cover sublimated transfer onto a finished garment, which is a different commercial relationship from supplying decorated ribbon as a component. Where those overlap, the boundaries are stated, because a buyer who arrives at a factory asking for "printed ribbon" and leaves with a woven label, or with a heat-transfer on a pre-finished good, has procured a different product with a different cost structure, a different MOQ and a different set of failure modes. Getting the category right in the first request saves a great deal of rework later.</p>
+
+<h2>The four printing routes used in commercial ribbon production</h2>
+<p>Four methods account for essentially all printed decorative ribbon sold commercially. Each works by a different physical mechanism, and each mechanism dictates what the method can do, what it costs and how it wears. The right way to choose is to start from the constraints of the finished product and work backwards to the process, rather than starting from the process and hoping the product conforms.</p>
+
+<h3>Screen printing</h3>
+<p>Screen printing, and specifically rotary screen printing in the ribbon industry, is the volume workhorse. The artwork is separated into individual spot colours, each colour is engraved or otherwise prepared as a cylindrical screen, and each screen deposits a controlled film of ink onto the ribbon as it passes through the machine. Because each screen is a physical object, each colour is a physical pass and a physical cost. The advantages are substantial and well understood: the ink deposit is thick and opaque, which gives excellent coverage on textured and hairy substrates such as velvet and burlap that transparent digital inks cannot cover; the cost per metre falls steeply once the screens are paid for, which makes it the right answer for large volumes of simple designs; and screen printing is the only one of these methods that can lay down a true opaque white underlayer, which is what makes it possible to print a saturated colour on a dark ribbon or on a ribbon that would otherwise be transparent.</p>
+
+<p>The weaknesses are equally well understood. Colour is controlled by the ink mix, so consistency is excellent within a run and adequate between runs if the ink is mixed to a measured standard, but it is not identical to what a digital file specifies. Registration, meaning the alignment of one colour against another, is affected by the mechanical repeat of the machine and by any variation in the tension of the ribbon as it passes through, and on fine multi-colour logos this is usually the characteristic that determines whether the print looks professional. There is also a real minimum order quantity, because the screen preparation and the changeover time have to be recovered. Screen printing on ribbon also carries a physical limitation on repeat length: the repeat is fixed by the circumference of the screen, so a design with a long repeat requires a large-diameter screen and a specific machine. Knowing this before the artwork is finalised is worth real money.</p>
+
+<h3>Digital printing</h3>
+<p>Digital printing on ribbon uses inkjet heads, and in the ribbon trade this is commonly referred to as digital or sublimation-surface printing depending on the chemistry involved. Its defining advantage is that it removes the separation and setup constraint entirely. There is no screen cost, there is no per-colour charge, there is no minimum driven by setup, and there is no practical limit on the number of colours. It reproduces gradients, shading, photographic imagery and fine detail that screen printing cannot reproduce at all, which is why it is the standard route for premium gift packaging where the artwork carries photographic imagery, and for seasonal programmes where designs change every year and a new screen each season would not be amortised.</p>
+
+<p>The trade-offs are cost and surface character. The per-metre cost is higher than screen printing, so digital loses on price at volume and wins on price at low volume and on high colour count. The ink sits on the surface of the ribbon rather than penetrating it, so on a high-shine satin the printed area can read as flatter than the surrounding sheen, and on a heavily textured construction the print can bridge the texture rather than conform to it. On fabric with a pronounced drape, a surface deposit is also more prone to crack where the ribbon is sharply flexed, which matters for hair accessories and for any application involving repeated folding. Digital printing is the correct answer for a short run of a complex design, and it is the wrong answer for a simple two-colour logo repeated on a hundred thousand metres, where it is simply more expensive for the same visual result.</p>
+
+<h3>Heat transfer</h3>
+<p>Heat transfer printing is a decorating route in which the design is printed onto a transfer medium and then applied to the ribbon by heat and pressure in a calendar press. Because the colour is driven into the fibre rather than sitting on it, the result has excellent flexibility, it will not crack or peel, and it survives washing and abrasion considerably better than a surface deposit. On woven synthetic ribbon, particularly polyester, a heat-transfer print will outlast an identically designed digital surface print under every mechanical test that matters.</p>
+
+<p>The constraints are practical rather than technical. Heat transfer requires a transfer for each design, so there is a setup cost and a minimum quantity, though the transfer itself is cheaper to produce than an engraved screen. The press cycle adds time to the production schedule. Very high pile constructions such as velvet are problematic because the transfer cannot make full contact with an uneven pile, and the colour comes out uneven. Heat transfer also raises the elastane and polyamide content of the substrate, which matters if the ribbon is destined for a technical or apparel application with stretch requirements. And the transfer process requires heat, which can shrink or distort certain constructions if the temperature and dwell are not set correctly for the specific fabric, which is why the parameters need to be recorded and controlled rather than left to the operator.</p>
+
+<h3>Sublimation</h3>
+<p>Sublimation is a specific form of heat transfer with a distinctive characteristic: the dye turns directly into gas and bonds with the polyester fibre, so the colour becomes part of the material rather than a coating on it. The visual result is exceptional on polyester, with no hand-feel change and no tendency to crack, and it produces very high photographic fidelity. The constraint is the substrate: sublimation requires a polyester or polyester-coated surface, and it does not work on cotton, on linen, on jute or on paper. It also does not produce an opaque white, so a light ribbon cannot carry a saturated dark design from sublimation alone. Sublimation is the right choice for polyester-based fashion ribbon and for coated paper where a photographic or highly detailed image is required, and it is the wrong choice for a solid-colour brand logo on a natural-fibre trim.</p>
+
+<h2>Comparing the methods on the factors buyers actually negotiate</h2>
+<p>Price, minimum quantity and durability are the three axes on which a buyer is asked to decide. It is worth setting them out plainly, because the intuitive answer is often wrong in each case.</p>
+
+<p><strong>Price.</strong> Screen printing is cheapest at volume for simple designs, digital is cheapest at low volume and at high colour count, and the crossover between them is a specific number for a specific design. A practical rule is that screen printing wins where the design is one to three spot colours and the total programme exceeds several thousand metres; digital wins where the run is short, the design has more than four colours, or the artwork contains imagery. Heat transfer sits between them on price and wins on durability rather than on cost. The mistake to avoid is comparing methods on price per metre alone, because a method that is more expensive per metre and produces a better-wearing ribbon is frequently cheaper once the returns, the reorders and the customer-facing quality issues are counted.</p>
+
+<p><strong>Minimum quantity.</strong> Screen printing carries the highest setup-driven minimum because each colour is a separate screen. Digital carries the lowest because there is no setup to recover, although the factory still needs enough volume to cover the pre-production preparation and the approval cycle. Heat transfer sits in the middle. Where the buyer has flexibility in the quantity split, the commercially strongest structure is usually a single colourway at a modest pilot quantity to validate the design and the fit, followed by a larger production run once the strike-off is approved, and the pilot should be priced with the setup amortised so that the production run at scale is visibly cheaper per metre.</p>
+
+<p><strong>Durability.</strong> Ranked by resistance to washing, abrasion and repeated flexing, the order runs sublimation and heat transfer at the top, because the colour is inside the fibre, then screen printing, because the deposit is physically thick, then digital surface printing, because the ink sits on the surface. Ranked by colour opacity and coverage on textured substrates, the order reverses: screen printing is strongest, because it can lay down an opaque layer that fills the texture, and digital is weakest. This inversion is the most useful single fact in this guide. A programme for hair accessories worn and washed repeatedly should be biased towards the penetrating methods. A programme for a velvet gift wrap where opacity matters more than wash resistance should be biased towards screen printing. Trying to satisfy both requirements with one method is where buyers end up disappointed with a result that met the specification but not the intent.</p>
+
+<h2>Colour accuracy: what a colour standard does and does not guarantee</h2>
+<p>Every printed-ribbon programme involves a colour approval, and most colour disputes trace back to a misunderstanding about what was being approved. A Pantone chip on a paper swatch card and the same pigment printed on a 25-millimetre satin ribbon are two different physical objects with two different surface characteristics. The paper is matte, absorbent and unbacked. The satin is glossy, semi-transparent and coated with a finish applied after printing. The same ink reads darker and more saturated on a matte absorbent stock than it does on a glossy synthetic, and it reads differently again on a textured or brushed surface. Approving a Pantone chip is therefore approving a reference for the ink, not a reference for the finished ribbon.</p>
+
+<p>The workable procedure has three steps. First, the artwork is defined in a colour space that matches the print process, and the buyer and supplier agree the colour standard at the artwork stage, so that the artwork itself is not the variable. Second, a physical strike-off is produced, printed on the actual ribbon construction with the actual ink system under the actual finishing route, and it is this strike-off, not the swatch, that becomes the binding reference. Third, the approved strike-off is sealed, signed, retained by both parties and referenced by number on the purchase order and on the inspection instruction. Under a well-run continuous programme, an inspection compares the incoming ribbon against the sealed reference under a defined lighting condition, which removes the argument entirely because the question is no longer what the correct colour is but whether this material matches the object both parties agreed on.</p>
+
+<p>The second half of colour control concerns drift between production runs. Screen-printed ribbon is consistent within a run and consistent between runs when the ink is mixed against a measured standard rather than by eye, and the standard should name the reference, the tolerance and the measurement method. Digital printing is more directly repeatable from a stored profile and, for that reason, tends to be easier to re-order against years later. Where a programme runs across multiple sites or multiple seasons, this repeatability is often worth more than the per-metre saving of a cheaper method.</p>
+
+<h2>Artwork, repeat and the approval process</h2>
+<p>The approval sequence is short and it is worth understanding it in the right order, because artwork changes late in the process are expensive and sometimes fatal to the schedule.</p>
+
+<p><strong>Artwork preparation.</strong> Supply vector artwork, ideally EPS, PDF or AI, with text converted to outlines and transparency flattened, and specify the physical size of the repeat against the ribbon width. A vector file is what makes the print reproducible, because a rotary screen is cut directly from it. A raster file at screen resolution will be rejected, or redrawn at your cost, and a redraw is rarely exact. Where the buyer has only a logo in a standard vector format and no print-ready artwork, most factories will prepare it for a fee, and it is generally worth paying for that service rather than sending an unprepared file, because a properly prepared file is built in spot colours rather than process, which changes both the price and the outcome.</p>
+
+<p><strong>Repeat length.</strong> The repeat is the distance between successive impressions of the design along the ribbon, and it is fixed by the machine and the screen circumference rather than chosen freely. It must be decided before the artwork is finalised, because a change of repeat means new screens and, in the case of a large repeat, potentially a different machine. A useful discipline is to fix the repeat at the same point as the ribbon width, since both determine the print area and both are expensive to change later.</p>
+
+<p><strong>The strike-off.</strong> A strike-off, sometimes called a pre-production sample or a proof, is a short length of ribbon printed with the production method, ink and finishing route but outside the production run. It exists so that the buyer can approve the actual printed result rather than a mock-up. It is where colour, coverage, registration, repeat alignment, hand-feel and the interaction between the print and the finish are all evaluated. Approving from a digital mock-up is the single most common cause of an approval that unravels in production.</p>
+
+<p><strong>First article.</strong> The first article is the sample taken from the beginning of the actual production run, checked against the approved strike-off. It confirms that the production run reproduces the strike-off, and it is the last point at which a systematic error can be caught before the whole lot is made.</p>
+
+<h2>Writing a printed-ribbon specification that can be inspected</h2>
+<p>The printed-ribbon section of a purchase order should be self-contained and should carry enough information that a QC team with no access to the development history could still inspect it. Six items are needed.</p>
+
+<p><strong>The artwork.</strong> The file reference with a version number, the repeat length, the physical size of the design, and the number of spot colours, or a statement that the artwork is process and includes gradients. Colour separation matters commercially, because the number of separations determines the number of screens and therefore the price.</p>
+
+<p><strong>The print method and ink system.</strong> Specify the method, because the methods produce visibly different results and a generic instruction to print the artwork does not prevent a substitution. Where it matters, specify the ink system, for example water-based, plastisol or solvent-based, because ink chemistry determines wash resistance, hand-feel and the recycling pathway.</p>
+
+<p><strong>The registration tolerance.</strong> State it in millimetres and state where it is measured. A reasonable commercial baseline is plus or minus zero point three millimetres for fine or multi-colour work and plus or minus zero point five millimetres for general work, measured at the stated magnification on the finished ribbon after finishing.</p>
+
+<p><strong>The colour reference.</strong> Reference the sealed approved strike-off by number and date, not only a Pantone code, and state the reference standard and the tolerance for any instrument reading where an instrument reading is used.</p>
+
+<p><strong>The defect class limits.</strong> Define critical, major and minor defects in words, give a numerical threshold for each, and state the sampling standard and the conditions of inspection. Critical defects, which include wrong artwork, wrong colour, out-of-tolerance registration and contamination, are normally held at zero tolerance. The plan should also state what happens on rejection, whether it is sorting, rework or rework of the lot, and who bears the cost, because this is the clause that determines whether a rejection ends in a dispute.</p>
+
+<p><strong>The durability requirement.</strong> Where the ribbon will be washed, worn, flexed repeatedly or exposed to abrasion, state the test method and the acceptance criterion explicitly, such as a specified number of wash cycles with a specified colour-retention threshold, a specified number of rub cycles with a specified loss threshold, or a specified light exposure with a specified rating. Without a stated test and a stated threshold, "must be durable" is not a requirement and will not be enforced by anyone.</p>
+
+<h2>Print defects, their causes and their controls</h2>
+<p>Printed ribbon has a short, well-understood list of defect modes, and each one has a corresponding control. Knowing them is worth more than a general quality standard, because it lets a buyer write an inspection instruction that checks the right things.</p>
+
+<p><strong>Colour-to-colour misalignment</strong> means registration drift, usually caused by tension variation across the ribbon or by a mechanical repeat error, and the control is a defined registration tolerance checked at a stated frequency during the run, with the machine stopped and corrected rather than adjusted between two checks that are too far apart.</p>
+
+<p><strong>Colour out of specification against the sealed reference</strong> means the ink batch or the mixing standard has moved, and the control is a measured standard against which each ink batch is approved before use, plus a retained sample of the approved batch.</p>
+
+<p><strong>Coverage defects</strong> including gaps, streaks, skips and pinholes mean an issue with ink viscosity, screen tension, substrate contamination or dryer temperature, and the control is a recorded set of process parameters with a check at the start of each run.</p>
+
+<p><strong>Edge bleeding or halo around the design</strong> means the ink is spreading beyond the intended boundary, usually from excessive ink deposit or a substrate that is too absorbent, and the control is a maximum deposit setting and an approved strike-off that carries the same halo.</p>
+
+<p><strong>Ink transfer to the reverse of the ribbon</strong> means the deposit is too heavy or the substrate is too permeable, and it is a genuine defect for any ribbon that will be seen from both sides, and the control is a reverse-face check on a defined sample per lot.</p>
+
+<p><strong>Cracking or flaking of the print</strong> means the deposit is too brittle for the substrate or the substrate has been over-stretched, and the control is a flex test on the first article, and if the ribbon is destined for a flexed application then a stated flex durability requirement in the specification.</p>
+
+<p><strong>Shifting or migration of colour after finishing</strong> means the finishing route, particularly heat setting and washing, has interacted badly with the ink, and the control is the first-article check taken after finishing rather than before it, because a print approved before heat finishing may not survive it.</p>
+
+<h2>Printing and sustainability: matching the decoration to the disposal route</h2>
+<p>Printing interacts with sustainability in a way that is more specific than the general claim that "ribbon can be recycled". An unprinted polyester ribbon is a relatively straightforward single-polymer input. Once it is printed, the composite structure changes, and most modern recycling sorting cannot separate the ink from the fibre, so a printed ribbon is usually treated as a lower-grade or non-recyclable input. That makes the decoration route a genuine design decision rather than a marketing afterthought, and there are three directions available.</p>
+
+<p>The first is to specify recycled content. RPET, made from post-consumer bottle material, is the standard route for polyester ribbon and can be recycled again if the composite allows it. The important detail is that the certification must cover the printed product, because many certificates cover only the base fabric and pre-printed goods, which is a distinction that catches buyers out at exactly the moment it matters, when they are documenting a sustainability claim.</p>
+
+<p>The second is to move to paper. Paper ribbon printed with water-based or soy-based inks is widely recyclable, and where the ribbon is single-use and presented to a customer at the point of consumption, it is the most defensible choice available. The trade-off is durability and hand-feel, which is why paper ribbon dominates gift packaging and short-life retail applications rather than apparel trim.</p>
+
+<p>The third is to remove the print step entirely, by taking the colour and pattern from the weave or the yarn. This is a different kind of customisation, with a higher setup cost and a longer minimum quantity, but it produces a product with no ink in its life cycle and a finish that cannot crack, fade or transfer. For a brand with a simple repeating motif and a large volume, this is often the better answer than everyone expects, and it is worth putting to a supplier as a formal alternative to a print quote rather than treating it as a fallback.</p>
+
+<h2>How to brief a supplier for a printed-ribbon quotation</h2>
+<p>A short, disciplined brief produces comparable quotes and a faster and more accurate response. It should contain the ribbon construction and width, the material, the number of colours or a statement that the artwork is process, the design repeat length, the artwork file with a version number, the estimated or confirmed quantity and the annual forecast, the end use and any durability exposure, the required certifications, the packing format and the delivery market. Two further items routinely repay their inclusion. The first is a request for quotes under each of the two most likely print methods, because the crossover point is programme-specific and the factory will calculate it accurately, while a buyer guessing from a general rule of thumb will usually guess wrong. The second is a request that the quotation separate the setup or screen cost from the unit price and state the volume at which the setup is fully recovered, because that single number tells the buyer whether the pilot order should be planned as a test or as the start of the production run.</p>
+
+<p>Two mistakes are worth naming because they are common and expensive. The first is approving artwork and print method at the same time as the sample, so that the first sample is really the first attempt at the design rather than a test of the print. The second is specifying the print route as "custom printed" with no method named, which lets the factory choose the method on cost grounds, which may be a perfectly reasonable engineering decision and may not match what the finished product needs to survive. Both are avoidable by a single extra question and a single extra line in the purchase order.</p>
+
+<p>Xiamen Meisida Decoration Co., Ltd. has been manufacturing ribbon, bows and decorative trims in Xiamen, China since 2007, supplying brand owners, retail buyers and importers in more than fifty countries. The company operates its own production facility with in-house weaving, dyeing, printing, finishing and assembly, supports OEM and ODM programmes including custom printed ribbon, custom bows and decorative accessories, and holds OEKO-TEX, BSCI, SEDEX, ISO 9001 and FSC credentials on file. Printed-ribbon capability includes rotary screen printing, heat transfer, digital printing and sublimation, which means the print route can be matched to the construction and the end use rather than forced into a single method. If you are planning a printed-ribbon programme and want a supplier who can quote the setup separately, compare the methods against your own volume and tell you which one the programme actually needs, contact us to discuss the design, the volume and the durability requirement.</p>
+
+        <h2>FAQ — Custom ribbon printing methods</h2>
+${FAQ.map(f => `            <div class="faq-item"><p class="faq-q">${f.q}</p><p class="faq-a">${f.a}</p></div>`).join('\n')}
+        </article>`;
+
+const ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": `${URL}#article`,
+      "headline": H1,
+      "description": DESC,
+      "url": URL,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": URL },
+      "datePublished": DATE_ISO,
+      "dateModified": DATE_ISO,
+      "inLanguage": "en",
+      "image": "https://msdribbon.com/og-image.jpg",
+      "author": { "@id": "https://msdribbon.com/#organization" },
+      "publisher": { "@id": "https://msdribbon.com/#organization" },
+      "about": [
+        "Custom ribbon printing methods",
+        "Screen printing on ribbon",
+        "Heat transfer ribbon printing",
+        "Digital ribbon printing",
+        "Sublimation printing on polyester ribbon",
+        "Printed ribbon colour accuracy",
+        "OEM printed ribbon specification"
+      ],
+      "wordCount": 0
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${URL}#faq`,
+      "mainEntity": FAQ.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    }
+  ]
+};
+
+const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${TITLE}</title>
+    <meta name="description" content="${DESC}">
+    <link rel="canonical" href="${URL}">
+    <link rel="alternate" hreflang="en" href="${URL}">
+    <link rel="alternate" hreflang="x-default" href="${URL}">
+    <meta property="og:title" content="${H1}">
+    <meta property="og:description" content="${DESC}">
+    <meta property="og:url" content="${URL}">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://msdribbon.com/og-image.jpg">
+    <meta property="og:image:width" content="1424">
+    <meta property="og:image:height" content="752">
+    <meta property="og:image:alt" content="Xiamen Meisida Decoration Co., Ltd. - custom ribbon and bow manufacturer in Xiamen, China">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${H1}">
+    <meta name="twitter:description" content="${DESC}">
+    <meta name="twitter:image" content="https://msdribbon.com/og-image.jpg">
+    <meta property="article:published_time" content="${DATE_ISO}">
+    <meta property="article:modified_time" content="${DATE_ISO}">
+    <meta property="article:author" content="Xiamen Meisida Decoration Co., Ltd.">
+    <meta property="article:section" content="Sourcing Guides">
+    <meta property="article:tag" content="custom ribbon manufacturer">
+    <meta property="article:tag" content="ribbon printing methods">
+    <meta property="article:tag" content="screen printing ribbon">
+    <meta property="article:tag" content="heat transfer ribbon">
+    <meta property="article:tag" content="digital ribbon printing">
+    <meta property="article:tag" content="sublimation printing">
+    <meta property="article:tag" content="OEM ribbon guide">
+    <meta property="article:tag" content="ribbon manufacturing">
+    </head>
+    <meta name="google-site-verification" content="BYcK-w4SYVEjTT9PHjXBP_KeIBrGtAr9rSXwwJrlNJo" />
+    <meta name="msvalidate.01" content="ECF29653135740CD77EEF5074F931DF4" />
+
+    <script type="application/ld+json">
+${JSON.stringify(ld, null, 2)}
+    </script>
+${BODY}
+</body></html>
+`;
+
+const text = html
+  .replace(/<script[\s\S]*?<\/script>/g, ' ')
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ')
+  .replace(/\s+/g, ' ').trim();
+const wordCount = text.split(/\s+/).length;
+ld['@graph'][0].wordCount = wordCount;
+
+const finalHtml = html.replace(
+  /"wordCount": \d+/,
+  '"wordCount": ' + wordCount
+);
+
+const outFile = path.join(__dirname, 'blog', SLUG + '.html');
+fs.writeFileSync(outFile, finalHtml, 'utf8');
+
+console.log('OK ->', outFile);
+console.log('words:', wordCount, '| faq:', FAQ.length, '| desc len:', DESC.length);
