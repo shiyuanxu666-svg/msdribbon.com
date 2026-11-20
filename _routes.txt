@@ -385,3 +385,4 @@
 /blog/custom-ribbon-printing-methods-guide
 /blog/custom-ribbon-bundling-kitting-guide
 /blog/custom-ribbon-storage-shelf-life-inventory-planning-guide
+/blog/custom-ribbon-design-decoration-options-guide
