@@ -2329,4 +2329,10 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://msdribbon.com/blog/custom-ribbon-defect-classification-quality-tolerance-guide</loc>
+        <lastmod>2026-11-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>
