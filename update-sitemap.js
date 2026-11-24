@@ -4,9 +4,9 @@ const fs = require('fs');
 const path = require('path');
 
 const P = path.join(__dirname, 'sitemap.xml');
-const SLUG = 'custom-ribbon-labelling-compliance-requirements-guide';
+const SLUG = 'custom-ribbon-artwork-prepress-proofing-guide';
 const LOC = `https://msdribbon.com/blog/${SLUG}`;
-const LASTMOD = '2026-11-17';
+const LASTMOD = '2026-11-24';
 
 let s = fs.readFileSync(P, 'utf8');
 
